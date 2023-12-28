@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.taskapp"
+    namespace = "com.example.fruitapplication"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.taskapp"
+        applicationId = "com.example.fruitapplication"
         minSdk = 30
         targetSdk = 34
         versionCode = 1
