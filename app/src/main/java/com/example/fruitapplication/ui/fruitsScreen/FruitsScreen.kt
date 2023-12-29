@@ -66,9 +66,7 @@ fun FruitsList(
     Column (
         modifier = Modifier.padding(innerPadding),
     ) {
-        Spacer(modifier = Modifier.size(30.dp))
         Welcome(modifier = Modifier)
-        Spacer(modifier = Modifier.size(30.dp))
         when (fruitApiState) {
             is FruitApiState.Error -> {
                 Row(
@@ -106,12 +104,13 @@ fun Welcome(modifier: Modifier) {
             painter = painterResource(id = R.drawable.strawberry),
             contentDescription = null,
             modifier = Modifier
-                .size(65.dp),
+                .size(150.dp),
             contentScale = ContentScale.Crop,
         )
         Text(
             text = "Welcome to the\nFruit app!",
-            fontSize = 25.sp,
+            fontSize = 28.sp,
+            color = Color(0xFF72C444),
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(8.dp),
             textAlign = TextAlign.Center,
@@ -128,6 +127,7 @@ fun FruitColumn(modifier: Modifier, fruitList: List<Fruit>, onFruitClick: (Fruit
     ) {
         Text(
             text = "Fruits",
+            color = Color(0xFF72C444),
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(8.dp),

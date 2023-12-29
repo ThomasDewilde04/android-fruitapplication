@@ -18,8 +18,8 @@ fun BottomAppBar(
     onItemSelected: (Int) -> Unit,
 ) {
     NavigationBar(
-        containerColor = Color(0xFF5BBEBE),
-        contentColor = MaterialTheme.colorScheme.surfaceVariant,
+        containerColor = Color(0xFF71C543),
+        contentColor = MaterialTheme.colorScheme.onPrimary,
     ) {
         items.forEachIndexed { index, item ->
             NavigationBarItem(
@@ -33,9 +33,9 @@ fun BottomAppBar(
                 selected = selectedItem == index,
                 onClick = { onItemSelected(index) },
                 colors = NavigationBarItemDefaults.colors(
-                    selectedIconColor = Color.Black,
-                    selectedTextColor = Color.Black,
-                    indicatorColor = MaterialTheme.colorScheme.surfaceVariant,
+                    selectedIconColor = Color.DarkGray,
+                    selectedTextColor = Color.DarkGray,
+                    indicatorColor = MaterialTheme.colorScheme.errorContainer,
                 ),
             )
         }
