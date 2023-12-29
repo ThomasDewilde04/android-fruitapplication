@@ -14,6 +14,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 
+/**
+ * Component to display a text line with a bold name and a value.
+ *
+ * @param name
+ * @param value
+ */
 @Composable
 fun TextLine(name: String, value: String) {
     Text(

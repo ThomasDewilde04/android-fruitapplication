@@ -10,6 +10,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 
+/**
+ * Composable representing the bottom app bar with navigation functionality, displaying items with icons and labels.
+ *
+ * @param items A list of string items representing the labels for the navigation items.
+ * @param icons A list of ImageVector icons corresponding to the navigation items.
+ * @param selectedItem The index of the currently selected item in the bottom app bar.
+ * @param onItemSelected A callback function invoked when an item in the bottom app bar is selected.
+ */
 @Composable
 fun BottomAppBar(
     items: List<String>,
@@ -21,6 +29,7 @@ fun BottomAppBar(
         containerColor = Color(0xFF71C543),
         contentColor = MaterialTheme.colorScheme.onPrimary,
     ) {
+        // Iterate through the provided items to create the navigation bar items
         items.forEachIndexed { index, item ->
             NavigationBarItem(
                 icon = {

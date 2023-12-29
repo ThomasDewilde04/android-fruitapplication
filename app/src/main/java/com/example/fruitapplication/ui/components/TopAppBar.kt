@@ -10,6 +10,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
 
+/**
+ * Composable representing a custom top app bar.
+ *
+ * @param title The optional title to be displayed within the app bar.
+ */
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun TopAppBar(

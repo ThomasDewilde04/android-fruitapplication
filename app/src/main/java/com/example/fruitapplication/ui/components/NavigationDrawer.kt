@@ -15,6 +15,13 @@ import androidx.navigation.NavDestination
 import com.example.fruitapplication.R
 import com.example.fruitapplication.ui.navigation.Destinations
 
+/**
+ * Composable representing the content displayed within a navigation drawer.
+ *
+ * @param selectedDestination The currently selected destination.
+ * @param onTabPressed The callback function invoked when a tab is pressed.
+ * @param modifier The modifier to be applied to the layout.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NavigationDrawerContent(

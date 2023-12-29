@@ -15,7 +15,16 @@ import com.example.fruitapplication.ui.FruitApp
 import com.example.fruitapplication.ui.theme.FruitApplicationTheme
 import com.example.fruitapplication.ui.util.FruitNavigationType
 
+/**
+ * Main activity responsible for initializing and setting up the Fruit Application.
+ */
 class MainActivity : ComponentActivity() {
+
+    /**
+     * Initializes the activity and sets up the Fruit Application based on window size.
+     *
+     * @param savedInstanceState The saved instance state.
+     */
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

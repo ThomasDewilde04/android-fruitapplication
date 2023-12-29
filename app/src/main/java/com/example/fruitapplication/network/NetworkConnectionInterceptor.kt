@@ -9,7 +9,21 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import okio.IOException
 
+/**
+ * Interceptor class responsible for checking network connectivity before making HTTP requests.
+ *
+ * @param context The Context object used to access system services.
+ */
 class NetworkConnectionInterceptor(val context: Context) : Interceptor {
+
+    /**
+     * Intercepts the HTTP request chain and checks for network connectivity.
+     *
+     * @param chain The intercepted chain of HTTP requests.
+     * @return Response The response obtained after the request is executed.
+     * @throws IOException Throws an IOException when there is no network connectivity.
+     */
+    @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response = chain.run {
         if(!isConnected(context=context)){
             Log.i("retrofit", "there is no connection")
@@ -23,6 +37,12 @@ class NetworkConnectionInterceptor(val context: Context) : Interceptor {
 
     }
 
+    /**
+     * Checks the current network connectivity.
+     *
+     * @param context The Context object used to access system services.
+     * @return Boolean Returns `true` if there is an active network connection, otherwise `false`.
+     */
     fun isConnected(context: Context): Boolean {
         var result = false
         val connectivityManager =

@@ -17,6 +17,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 
+/**
+ * Composable representing a custom card UI component.
+ *
+ * @param name The text content displayed within the card.
+ * @param onClick The optional callback function invoked when the card is clicked.
+ */
 @Composable
 fun Card(name: String, onClick: () -> Unit = {}) {
     Box(
@@ -35,6 +41,11 @@ fun Card(name: String, onClick: () -> Unit = {}) {
     }
 }
 
+/**
+ * Composable representing the content displayed within a custom card component.
+ *
+ * @param name The text content displayed within the card.
+ */
 @Composable
 fun CardContent(name: String) {
     Text(

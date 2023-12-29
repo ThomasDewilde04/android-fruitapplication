@@ -20,6 +20,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.fruitapplication.R
 import com.example.fruitapplication.ui.components.FruitImageRow
 
+/**
+ * Composable function representing the detail screen of the about section in the Fruit Application.
+ *
+ * @param aboutViewModel The ViewModel responsible for handling the about screen functionality.
+ * @param innerPadding Padding values applied within the content of the detail screen.
+ */
 @Composable
 fun DetailScreen(
     aboutViewModel: AboutViewModel = viewModel(),
@@ -30,6 +36,11 @@ fun DetailScreen(
     )
 }
 
+/**
+ * Composable function representing the About section in the Fruit Application.
+ *
+ * @param innerPadding Padding values applied within the content of the About section.
+ */
 @Composable
 fun About(innerPadding: PaddingValues) {
     Box(

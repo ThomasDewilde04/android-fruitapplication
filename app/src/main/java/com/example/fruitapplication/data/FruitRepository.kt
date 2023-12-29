@@ -15,6 +15,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.net.SocketTimeoutException
 
+/**
+ * Repository interface for fruit-related data operations.
+ */
 interface FruitRepository {
 
     suspend fun insert(item: Fruit)
@@ -24,15 +27,24 @@ interface FruitRepository {
     suspend fun refresh()
 }
 
+/**
+ * Implementation of the [FruitRepository] that caches data fetched from the API into a local database.
+ */
 class CachingFruitRepository(
     private val fruitDao: FruitDao,
     private val fruitApiService: FruitApiService,
 ) : FruitRepository {
 
+    /**
+     * Inserts a fruit item into the local database.
+     */
      override suspend fun insert(item: Fruit) {
          fruitDao.insert(item.asDbFruit())
      }
 
+    /**
+     * Fetches a specific fruit from the API by its ID and inserts it into the local database.
+     */
     override suspend fun insertFruit(id: Int) {
         try {
             fruitApiService.getFruitAsFlow(id).collect() {
@@ -45,18 +57,27 @@ class CachingFruitRepository(
         }
     }
 
+    /**
+     * Retrieves a list of fruits from the local database as a Flow.
+     */
     override fun getFruits(): Flow<List<Fruit>> {
         return fruitDao.getFruits().map {
             it.asDomainFruits()
         }
     }
 
+    /**
+     * Retrieves a specific fruit by ID from the local database as a Flow.
+     */
     override fun getFruit(id: Int): Flow<Fruit> {
         return fruitDao.getFruit(id).map {
             it.asDomainFruit()
         }
     }
 
+    /**
+     * Refreshes the data by fetching all fruits from the API and inserting them into the local database.
+     */
     override suspend fun refresh() {
         try {
             fruitApiService.getFruitsAsFlow().collect() {

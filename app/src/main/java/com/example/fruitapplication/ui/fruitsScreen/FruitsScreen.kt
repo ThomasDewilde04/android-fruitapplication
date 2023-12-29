@@ -12,8 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -26,7 +24,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -37,6 +34,12 @@ import com.example.fruitapplication.R
 import com.example.fruitapplication.model.Fruit
 import com.example.fruitapplication.ui.components.Card
 
+/**
+ * Composable responsible for displaying the list of fruits and the details of a selected fruit.
+ * It manages the UI states when interacting with fruits, including showing a list of fruits and their details.
+ *
+ * @param innerPadding Padding values for the internal layout.
+ */
 @Composable
 fun FruitsScreen(
     innerPadding: PaddingValues,
@@ -56,6 +59,15 @@ fun FruitsScreen(
     }
 }
 
+
+/**
+ * Composable responsible for displaying the welcome composable and the list of fruits fetched from the API.
+ * It manages the UI states such as loading, error, and success when retrieving fruit data.
+ *
+ * @param fruitsScreenViewModel The view model used for fetching fruit data.
+ * @param innerPadding Padding values for the internal layout.
+ * @param onFruitClick Callback function triggered when a fruit item is clicked.
+ */
 @Composable
 fun FruitsList(
     fruitsScreenViewModel: FruitsScreenViewModel = viewModel(factory = FruitsScreenViewModel.Factory),
@@ -96,6 +108,11 @@ fun FruitsList(
     }
 }
 
+/**
+ * Composable displaying the welcome screen for the Fruit application.
+ *
+ * @param modifier Modifier for the layout of the welcome screen.
+ */
 @Composable
 fun Welcome(modifier: Modifier) {
     Column(
@@ -120,6 +137,13 @@ fun Welcome(modifier: Modifier) {
     }
 }
 
+/**
+ * Composable responsible for displaying a column of fruits.
+ *
+ * @param modifier Modifier for the layout of the fruit column.
+ * @param fruitList The list of fruits to be displayed.
+ * @param onFruitClick Callback function triggered when a fruit item is clicked.
+ */
 @Composable
 fun FruitColumn(modifier: Modifier, fruitList: List<Fruit>, onFruitClick: (Fruit) -> Unit) {
     Column(

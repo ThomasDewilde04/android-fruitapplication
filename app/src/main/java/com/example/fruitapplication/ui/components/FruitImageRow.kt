@@ -12,6 +12,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 
+/**
+ * Composable function to display three images in a row.
+ *
+ * @param img1
+ * @param img2
+ * @param img3
+ */
 @Composable
 fun FruitImageRow(img1: Int, img2: Int, img3: Int) {
     Row(

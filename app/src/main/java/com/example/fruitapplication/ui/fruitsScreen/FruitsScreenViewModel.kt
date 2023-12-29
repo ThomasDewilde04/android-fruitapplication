@@ -19,6 +19,11 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.io.IOException
 
+/**
+ * ViewModel responsible for handling the data and state related to fruit information in the Fruit application.
+ *
+ * @property fruitRepository The repository responsible for accessing and managing fruit data.
+ */
 class FruitsScreenViewModel (
     private val fruitRepository: FruitRepository
 ) : ViewModel() {
@@ -28,12 +33,20 @@ class FruitsScreenViewModel (
     lateinit var fruitListState: StateFlow<List<Fruit>>
     lateinit var fruitState: StateFlow<Fruit>
 
+    /**
+     * Initializes the ViewModel by fetching and loading initial fruit data.
+     */
     init {
         getRepoFruits()
         getFruit(1)
         Log.i("vm inspection", "FruitsScreenViewModel init")
     }
 
+    /**
+     * Fetches details of a specific fruit by its ID.
+     *
+     * @param id The unique identifier of the fruit to be fetched.
+     */
     fun getFruit(id: Int) {
         try {
             fruitApiState = FruitApiState.Loading
@@ -58,6 +71,9 @@ class FruitsScreenViewModel (
         }
     }
 
+    /**
+     * Fetches the list of fruits from the repository.
+     */
     private fun getRepoFruits() {
         try {
             viewModelScope.launch { fruitRepository.refresh() }
@@ -73,6 +89,9 @@ class FruitsScreenViewModel (
     }
 
     companion object {
+        /**
+         * Factory for creating instances of [FruitsScreenViewModel] with dependency injection.
+         */
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val application = (this[APPLICATION_KEY] as FruitsApplication)

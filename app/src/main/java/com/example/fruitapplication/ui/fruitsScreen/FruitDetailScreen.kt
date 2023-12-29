@@ -31,6 +31,14 @@ import com.example.fruitapplication.model.Fruit
 import androidx.compose.ui.text.buildAnnotatedString
 import com.example.fruitapplication.ui.components.TextLine
 
+/**
+ * Composable function to display detailed information about a particular fruit.
+ *
+ * @param innerPadding Padding values for the content.
+ * @param fruit The Fruit object to display details.
+ * @param onBack Callback function when the back button is clicked.
+ * @param fruitsScreenViewModel The ViewModel for fetching fruit details.
+ */
 @Composable
 fun FruitDetailFruitScreen(
     innerPadding: PaddingValues,
@@ -38,9 +46,11 @@ fun FruitDetailFruitScreen(
     onBack: () -> Unit,
     fruitsScreenViewModel: FruitsScreenViewModel = viewModel(factory = FruitsScreenViewModel.Factory),
 ) {
+    // Collecting state from the ViewModel
     val fruitState = fruitsScreenViewModel.fruitState.collectAsState()
     val fruitApiState = fruitsScreenViewModel.fruitApiState
 
+    // Fetch fruit details when the screen launches
     LaunchedEffect(Unit) {
         fruitsScreenViewModel.getFruit(fruit.id)
     }
@@ -64,6 +74,7 @@ fun FruitDetailFruitScreen(
             }
         }
         when (fruitApiState) {
+            // Show error message if fetching fruit fails
             FruitApiState.Error -> {
                 Box(
                     modifier = Modifier
@@ -83,6 +94,7 @@ fun FruitDetailFruitScreen(
                     )
                 }
             }
+            // Show loading message while fetching fruit details
             FruitApiState.Loading -> {
                 Box(
                     modifier = Modifier
@@ -102,6 +114,7 @@ fun FruitDetailFruitScreen(
                     )
                 }
             }
+            // Display detailed information about the fruit
             FruitApiState.Success -> {
                 Column(
                     modifier = Modifier

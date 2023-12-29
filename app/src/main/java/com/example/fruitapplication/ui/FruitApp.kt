@@ -39,7 +39,12 @@ import com.example.fruitapplication.ui.navigation.Destinations
 import com.example.fruitapplication.ui.components.TopAppBar
 import com.example.fruitapplication.ui.util.FruitNavigationType
 
-
+/**
+ * Composable function representing the main entry point of the Fruit Application.
+ *
+ * @param navigationType Defines the type of navigation used in the app.
+ * @param navController The navigation controller used for handling navigation within the app.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FruitApp(
@@ -50,6 +55,7 @@ fun FruitApp(
     val items = listOf("Fruits", "About")
     val icons = listOf(Icons.Outlined.MenuBook, Icons.Outlined.Info )
 
+    // Based on the specified navigation type, different UI layouts are chosen
     if (navigationType == FruitNavigationType.PERMANENT_NAVIGATION_DRAWER) {
         PermanentNavigationDrawer(drawerContent = {
             PermanentDrawerSheet(Modifier.width(dimensionResource(R.dimen.drawer_width))) {
