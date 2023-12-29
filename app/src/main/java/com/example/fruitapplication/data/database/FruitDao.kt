@@ -12,7 +12,7 @@ interface FruitDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(item: dbFruit)
 
-    @Query("SELECT * FROM fruit ORDER BY name DESC")
+    @Query("SELECT * FROM fruit ORDER BY name ASC")
     fun getFruits(): Flow<List<dbFruit>>
 
     @Query("SELECT * FROM fruit WHERE id = :id")

@@ -3,11 +3,11 @@ package com.example.fruitapplication.ui.fruitsScreen
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.fruitapplication.model.Fruit
 import androidx.compose.ui.text.buildAnnotatedString
+import com.example.fruitapplication.ui.components.TextLine
 
 @Composable
 fun FruitDetailFruitScreen(
@@ -43,7 +44,6 @@ fun FruitDetailFruitScreen(
     LaunchedEffect(Unit) {
         fruitsScreenViewModel.getFruit(fruit.id)
     }
-
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -108,7 +108,6 @@ fun FruitDetailFruitScreen(
                         .fillMaxWidth()
                         .padding(top = 50.dp)
                         .verticalScroll(rememberScrollState()),
-                    horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Text(
                         text = fruitState.value.name,
@@ -124,54 +123,9 @@ fun FruitDetailFruitScreen(
                             ),
                     )
                     Spacer(modifier = Modifier.height(16.dp))
-                        Text(
-                            text = buildAnnotatedString {
-                                pushStyle(SpanStyle(fontWeight = FontWeight.Bold, color = Color(0xFF72C444)))
-                                append("Fruit family: ")
-                                pop()
-                                append(fruitState.value.family)
-                            },
-                            fontSize = 16.sp,
-                            textAlign = TextAlign.Left,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(
-                                    horizontal = 16.dp,
-                                    vertical = 10.dp
-                                ),
-                        )
-                        Text(
-                            text = buildAnnotatedString {
-                                pushStyle(SpanStyle(fontWeight = FontWeight.Bold, color = Color(0xFF72C444)))
-                                append("Fruit order: ")
-                                pop()
-                                append(fruitState.value.order)
-                            },
-                            fontSize = 16.sp,
-                            textAlign = TextAlign.Left,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(
-                                    horizontal = 16.dp,
-                                    vertical = 10.dp
-                                ),
-                        )
-                        Text(
-                            text = buildAnnotatedString {
-                                pushStyle(SpanStyle(fontWeight = FontWeight.Bold, color = Color(0xFF72C444)))
-                                append("Fruit genus: ")
-                                pop()
-                                append(fruitState.value.genus)
-                            },
-                            fontSize = 16.sp,
-                            textAlign = TextAlign.Left,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(
-                                    horizontal = 16.dp,
-                                    vertical = 10.dp
-                                ),
-                        )
+                        TextLine(name = "Fruit family:  ", value = fruitState.value.family)
+                        TextLine(name = "Fruit order:   ", value = fruitState.value.order)
+                        TextLine(name = "Fruit genus:   ", value = fruitState.value.genus)
                         Column {
                             Text(
                                 text = "Fruit nutritions:",
@@ -186,61 +140,20 @@ fun FruitDetailFruitScreen(
                                         vertical = 10.dp
                                     ),
                             )
-                            Text(
-                                text = "Calories: ${fruitState.value.nutritions?.calories}",
-                                fontSize = 16.sp,
-                                textAlign = TextAlign.Left,
+                            Column (
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(
-                                        horizontal = 40.dp,
-                                        vertical = 6.dp
+                                        horizontal = 16.dp,
+                                        vertical = 10.dp
                                     ),
-                            )
-                            Text(
-                                text = "Fat: ${fruitState.value.nutritions?.fat}",
-                                fontSize = 16.sp,
-                                textAlign = TextAlign.Left,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(
-                                        horizontal = 40.dp,
-                                        vertical = 6.dp
-                                    ),
-                            )
-                            Text(
-                                text = "Sugar: ${fruitState.value.nutritions?.sugar}",
-                                fontSize = 16.sp,
-                                textAlign = TextAlign.Left,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(
-                                        horizontal = 40.dp,
-                                        vertical = 6.dp
-                                    ),
-                            )
-                            Text(
-                                text = "Carbohydrates: ${fruitState.value.nutritions?.carbohydrates}",
-                                fontSize = 16.sp,
-                                textAlign = TextAlign.Left,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(
-                                        horizontal = 40.dp,
-                                        vertical = 6.dp
-                                    ),
-                            )
-                            Text(
-                                text = "Protein: ${fruitState.value.nutritions?.protein}",
-                                fontSize = 16.sp,
-                                textAlign = TextAlign.Left,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(
-                                        horizontal = 40.dp,
-                                        vertical = 6.dp
-                                    ),
-                            )
+                            ){
+                                TextLine(name = "Calories:  ", value = fruitState.value.nutritions?.calories.toString())
+                                TextLine(name = "Carbohydrates:  ", value = fruitState.value.nutritions?.carbohydrates.toString())
+                                TextLine(name = "Protein:  ", value = fruitState.value.nutritions?.protein.toString())
+                                TextLine(name = "Fat:  ", value = fruitState.value.nutritions?.fat.toString())
+                                TextLine(name = "Sugar: ", value = fruitState.value.nutritions?.sugar.toString())
+                            }
                         }
                 }
             }
