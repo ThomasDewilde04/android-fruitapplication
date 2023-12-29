@@ -18,7 +18,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.fruitapplication.R
-import com.example.fruitapplication.ui.detailScreen.DetailScreen
+import com.example.fruitapplication.ui.aboutScreen.DetailScreen
 import com.example.fruitapplication.ui.fruitsScreen.FruitsScreen
 import com.example.fruitapplication.ui.navigation.BottomAppBar
 import com.example.fruitapplication.ui.navigation.Destinations
@@ -31,7 +31,7 @@ fun FruitApp(
     navController: NavHostController = rememberNavController(),
     ) {
     var selectedItem by remember { mutableStateOf(0) }
-    val items = listOf("Fruits", "Detail")
+    val items = listOf("Fruits", "About")
     val icons = listOf(Icons.Outlined.MenuBook, Icons.Outlined.Info )
 
     Scaffold(
@@ -39,7 +39,7 @@ fun FruitApp(
             TopAppBar(
                 modifier = Modifier.padding(8.dp),
                 title = when (selectedItem) {
-                    1 -> R.string.detail
+                    1 -> R.string.about
                     else -> null // No title, will result in no TopAppBar being rendered
                 },
             )
@@ -60,7 +60,7 @@ fun FruitApp(
             composable(route = Destinations.Start.name) {
                 FruitsScreen(innerPadding = innerPadding)
             }
-            composable(route = Destinations.Detail.name) {
+            composable(route = Destinations.About.name) {
                 DetailScreen(innerPadding = innerPadding)
             }
         }

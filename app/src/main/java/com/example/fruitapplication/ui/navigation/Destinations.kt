@@ -5,5 +5,5 @@ import com.example.fruitapplication.R
 
 enum class Destinations (@StringRes val title: Int) {
     Start(title = R.string.fruits),
-    Detail(title = R.string.detail),
+    About(title = R.string.about),
 }
