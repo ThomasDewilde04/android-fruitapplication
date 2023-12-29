@@ -14,4 +14,7 @@ interface FruitDao {
 
     @Query("SELECT * FROM fruit ORDER BY name DESC")
     fun getFruits(): Flow<List<dbFruit>>
+
+    @Query("SELECT * FROM fruit WHERE id = :id")
+    fun getFruit(id: Int): Flow<dbFruit>
 }

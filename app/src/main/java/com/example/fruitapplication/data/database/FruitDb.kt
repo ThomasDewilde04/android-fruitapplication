@@ -6,7 +6,7 @@ import androidx.room.RoomDatabase
 import androidx.room.Room
 
 
-@Database(entities = [dbFruit::class], version = 1, exportSchema = false)
+@Database(entities = [dbFruit::class], version = 3, exportSchema = false)
 abstract class FruitDb : RoomDatabase() {
 
     abstract fun fruitDao(): FruitDao

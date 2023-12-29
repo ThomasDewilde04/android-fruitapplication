@@ -4,6 +4,9 @@ import android.content.Context
 import com.example.fruitapplication.data.database.FruitDb
 import com.example.fruitapplication.network.FruitApiService
 import com.example.fruitapplication.network.NetworkConnectionInterceptor
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 
@@ -18,10 +21,11 @@ class DefaultAppContainer(private val context: Context) : AppContainer {
         .addInterceptor(networkCheck)
         .build()
 
-    private val baseUrl = "https://www.fruityvice.com/api/fruit/"
+    private val baseUrl = "https://www.fruityvice.com/api/"
     private val retrofit = Retrofit.Builder()
         .baseUrl(baseUrl)
         .client(client)
+        .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
         .build()
 
     private val retrofitService: FruitApiService by lazy {

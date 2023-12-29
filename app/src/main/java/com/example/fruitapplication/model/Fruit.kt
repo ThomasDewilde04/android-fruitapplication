@@ -6,4 +6,5 @@ data class Fruit(
     var family: String,
     var order: String,
     var genus: String,
+    var nutritions: Nutritions?,
 )

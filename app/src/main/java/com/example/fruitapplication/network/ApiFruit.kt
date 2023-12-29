@@ -1,7 +1,7 @@
 package com.example.fruitapplication.network
 
-import androidx.room.Embedded
 import com.example.fruitapplication.model.Fruit
+import com.example.fruitapplication.model.Nutritions
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.serialization.Serializable
@@ -13,6 +13,7 @@ data class ApiFruit(
     val family: String,
     val order: String,
     val genus: String,
+    val nutritions: ApiNutritions?,
 )
 
 fun Flow<List<ApiFruit>>.asDomainObjects(): Flow<List<Fruit>> {
@@ -23,7 +24,12 @@ fun Flow<List<ApiFruit>>.asDomainObjects(): Flow<List<Fruit>> {
 
 fun List<ApiFruit>.asDomainObjects(): List<Fruit> {
     var domainList = this.map {
-        Fruit(it.name, it.id, it.family, it.order, it.genus)
+        Fruit(it.name, it.id, it.family, it.order, it.genus, it.nutritions?.asDomainObject())
     }
     return domainList
 }
+
+fun ApiFruit.asDomainObject(): Fruit {
+    return Fruit(name, id, family, order, genus, nutritions?.asDomainObject())
+}
+
