@@ -2,4 +2,5 @@
     <string name="app_name">Fruit Application</string>
     <string name="fruits">Fruits</string>
     <string name="about">About</string>
+    <string name="navigation_rail">Navigate between items here</string>
 </resources>

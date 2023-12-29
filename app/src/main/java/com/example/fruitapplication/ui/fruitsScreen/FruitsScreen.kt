@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -64,9 +66,11 @@ fun FruitsList(
     val fruitApiState = fruitsScreenViewModel.fruitApiState
 
     Column (
-        modifier = Modifier.padding(innerPadding),
+        modifier = Modifier
+            .padding(innerPadding)
+            .fillMaxWidth()
     ) {
-        Welcome(modifier = Modifier)
+        Welcome(modifier = Modifier.weight(1f))
         when (fruitApiState) {
             is FruitApiState.Error -> {
                 Row(
@@ -85,7 +89,7 @@ fun FruitsList(
                 }
             }
             is FruitApiState.Success -> {
-                FruitColumn(modifier = Modifier, fruitList = fruitListState, onFruitClick = onFruitClick)
+                FruitColumn(modifier = Modifier.weight(2f), fruitList = fruitListState, onFruitClick = onFruitClick)
             }
         }
 
@@ -105,14 +109,12 @@ fun Welcome(modifier: Modifier) {
             contentDescription = null,
             modifier = Modifier
                 .size(150.dp),
-            contentScale = ContentScale.Crop,
         )
         Text(
             text = "Welcome to the\nFruit app!",
             fontSize = 28.sp,
             color = Color(0xFF72C444),
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(8.dp),
             textAlign = TextAlign.Center,
         )
     }
@@ -132,13 +134,14 @@ fun FruitColumn(modifier: Modifier, fruitList: List<Fruit>, onFruitClick: (Fruit
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(8.dp),
         )
-        Spacer(modifier = Modifier.height(6.dp))
         Divider(color = Color.LightGray, thickness = 1.dp)
-        Spacer(modifier = Modifier.height(25.dp))
-        LazyColumn {
+        Spacer(modifier = Modifier.height(15.dp))
+        LazyColumn(
+            modifier = Modifier.weight(1f)
+        ) {
             items(fruitList) { fruit ->
-                Card(name = fruit.name ,onClick = { onFruitClick(fruit) })
-                Spacer(modifier = Modifier.height(20.dp))
+                Card(name = fruit.name, onClick = { onFruitClick(fruit) })
+                Spacer(modifier = Modifier.height(12.dp))
             }
         }
     }

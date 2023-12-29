@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -38,10 +40,11 @@ fun About(innerPadding: PaddingValues) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(
-                    top = 160.dp,
-                    bottom = 90.dp,
-                ),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+                    top = 10.dp,
+                    bottom = 10.dp,
+                )
+                .verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.SpaceEvenly
         ) {
             FruitImageRow(
                 img1 = R.drawable.apple,

@@ -24,14 +24,12 @@ fun FruitImageRow(img1: Int, img2: Int, img3: Int) {
             modifier = Modifier
                 .size(90.dp),
         )
-        Spacer(modifier = Modifier.width(12.5.dp))
         Image(
             painter = painterResource(id = img2),
             contentDescription = "Image 2",
             modifier = Modifier
                 .size(90.dp),
         )
-        Spacer(modifier = Modifier.width(12.5.dp))
         Image(
             painter = painterResource(id = img3),
             contentDescription = "Image 3",

@@ -8,9 +8,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.ui.Modifier
 import com.example.fruitapplication.ui.FruitApp
 import com.example.fruitapplication.ui.theme.FruitApplicationTheme
+import com.example.fruitapplication.ui.util.FruitNavigationType
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
@@ -24,7 +27,21 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    FruitApp()
+                    val windowSize = calculateWindowSizeClass(this)
+                    when (windowSize.widthSizeClass) {
+                        WindowWidthSizeClass.Compact -> {
+                            FruitApp(FruitNavigationType.BOTTOM_NAVIGATION)
+                        }
+                        WindowWidthSizeClass.Medium -> {
+                            FruitApp(FruitNavigationType.NAVIGATION_RAIL)
+                        }
+                        WindowWidthSizeClass.Expanded -> {
+                            FruitApp(navigationType = FruitNavigationType.PERMANENT_NAVIGATION_DRAWER)
+                        }
+                        else -> {
+                            FruitApp(navigationType = FruitNavigationType.BOTTOM_NAVIGATION)
+                        }
+                    }
                 }
             }
         }
