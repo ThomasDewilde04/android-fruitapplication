@@ -1,4 +1,4 @@
-package com.example.fruitapplication.ui.navigation
+package com.example.fruitapplication.ui.components
 
 import androidx.annotation.StringRes
 import androidx.compose.material3.ExperimentalMaterial3Api

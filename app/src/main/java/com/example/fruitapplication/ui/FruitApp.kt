@@ -8,17 +8,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.MenuBook
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.PermanentDrawerSheet
 import androidx.compose.material3.PermanentNavigationDrawer
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -38,9 +34,9 @@ import com.example.fruitapplication.ui.aboutScreen.DetailScreen
 import com.example.fruitapplication.ui.components.FruitNavigationRail
 import com.example.fruitapplication.ui.components.NavigationDrawerContent
 import com.example.fruitapplication.ui.fruitsScreen.FruitsScreen
-import com.example.fruitapplication.ui.navigation.BottomAppBar
+import com.example.fruitapplication.ui.components.BottomAppBar
 import com.example.fruitapplication.ui.navigation.Destinations
-import com.example.fruitapplication.ui.navigation.TopAppBar
+import com.example.fruitapplication.ui.components.TopAppBar
 import com.example.fruitapplication.ui.util.FruitNavigationType
 
 
