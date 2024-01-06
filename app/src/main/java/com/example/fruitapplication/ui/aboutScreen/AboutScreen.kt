@@ -58,9 +58,9 @@ fun About(innerPadding: PaddingValues) {
             verticalArrangement = Arrangement.SpaceEvenly
         ) {
             FruitImageRow(
-                img1 = R.drawable.apple,
-                img2 = R.drawable.grape ,
-                img3 = R.drawable.orange
+                img1 = R.mipmap.apple,
+                img2 = R.mipmap.grape ,
+                img3 = R.mipmap.orange
             )
             Text(
                 text = "Fruit Application\n" +
@@ -79,9 +79,9 @@ fun About(innerPadding: PaddingValues) {
 
             )
             FruitImageRow(
-                img1 = R.drawable.banana,
-                img2 = R.drawable.cherry ,
-                img3 = R.drawable.watermelon
+                img1 = R.mipmap.banana,
+                img2 = R.mipmap.cherry ,
+                img3 = R.mipmap.watermelon
             )
         }
     }

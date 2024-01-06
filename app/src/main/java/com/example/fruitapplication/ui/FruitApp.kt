@@ -17,7 +17,7 @@ import androidx.compose.material3.PermanentNavigationDrawer
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -51,7 +51,7 @@ fun FruitApp(
     navigationType: FruitNavigationType,
     navController: NavHostController = rememberNavController(),
     ) {
-    var selectedItem by remember { mutableStateOf(0) }
+    var selectedItem by remember { mutableIntStateOf(0) }
     val items = listOf("Fruits", "About")
     val icons = listOf(Icons.Outlined.MenuBook, Icons.Outlined.Info )
 
