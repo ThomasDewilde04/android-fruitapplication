@@ -39,7 +39,6 @@ class FruitsScreenViewModel (
     init {
         getRepoFruits()
         getFruit(1)
-        Log.i("vm inspection", "FruitsScreenViewModel init")
     }
 
     /**
@@ -74,7 +73,7 @@ class FruitsScreenViewModel (
     /**
      * Fetches the list of fruits from the repository.
      */
-    private fun getRepoFruits() {
+    fun getRepoFruits() {
         try {
             viewModelScope.launch { fruitRepository.refresh() }
             fruitListState = fruitRepository.getFruits().stateIn(

@@ -102,4 +102,9 @@ dependencies {
     androidTestImplementation("androidx.navigation:navigation-testing:2.7.6")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    testImplementation("org.mockito:mockito-core:5.8.0")
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
+    androidTestImplementation("org.mockito:mockito-android:5.8.0")
+
 }
